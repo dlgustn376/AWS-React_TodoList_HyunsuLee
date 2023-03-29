@@ -1,8 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import React from 'react';
-import { IoMdAddCircle } from 'react-icons/io';
-import { AiOutlineFileText } from 'react-icons/ai';
+import React, { useRef, useState } from 'react';
+import PromptModal from '../../components/Modal/PromptModal/PromptModal';
+import AddTodo from '../../components/Todo/AddTodo/AddTodo';
+import TodoList from '../../components/Todo/TodoList/TodoList';
 
 
 const container = css`
@@ -31,85 +32,112 @@ const mainTitle = css`
     font-size: 40px;
     
 `;
-const TodoInputContainer =css`
-    position: relative;
+
+const TodoContentList = css`
     display: flex;
-    align-items: flex-end;
-    border-bottom: 1px solid #dbdbdb;
-    padding-right: 50px;
-    width: 60%;
-    height: 40px;
-    background-color: #eee;
+    flex-wrap: wrap;
+    padding: 10px;
 
-`;
-
-const TodoInputFileText = css`
-    font-size: 30px;
-    margin: 5px;
-`;
-
-const TodoInput =css`
-    box-sizing: border-box;
-    margin-top: 20px;
-    padding: 0 70px;
-    outline: none;
-    border: none;
-    padding: 0px 50px 0px 10px;
-
-    border-bottom: 3px solid white;
     width: 100%;
-    height: 100%;
-    font-size: 1.2rem;
-    transition: padding 0.5s ease;
-
-    background-color: #eee;
-    &:focus{
-        padding: 0px 10px;
-    }
+    height: 90%;
+    overflow-y: auto;
 `;
 
-const AddTodoButton = css`
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
-    right: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    border-radius: 50%;
-    padding: 0;
-    width: 40px;
-    height: 40px;
-    font-size: 2rem;
-    color: #fe2d1e;
-    background-color: #eee;
-    transition: all 1s ease;
-    cursor: pointer;
-    &:hover {
-        transform: translateY(-50%) rotate(360deg);
-    }
 
-`;
+
 const Todo = () => {
+    
+    
+    const [isOpen, setIsOpen] = useState(false);
+
+    const [modifyTodo, setModifyTodo] = useState({
+        id: 0,
+        content: ''
+    });
+
+    const [input, setInput] = useState({
+        id: 0,
+        content: ''
+    });
+    const [todoList, setTodoList] = useState([]);
+    const todoId = useRef(1);
+
+    const onChange = (e) => {
+        setInput({
+            ...input,
+            content: e.target.value
+        });
+    }
+
+    const onKeyUp = (e) => {
+        if(e.keyCode === 13) {
+            onAdd();
+        }
+    }
+
+    const onAdd = () => {
+        const todo = {
+            ...input,
+            id: todoId.current++
+        }
+        setTodoList([...todoList, todo]);
+        setInput({
+            ...input, 
+            content: ''
+        });
+    }
+
+    const onRemove = (id) => {
+        setTodoList(todoList.filter(
+            todo => {
+                return todo.id !== id;
+            }
+        ))
+    }
+
+    const updateTodo = (modifyTodo) => {
+        setTodoList(
+            todoList.map(
+                todo => {
+                    if(todo.id === modifyTodo.id) {
+                        todo.content = modifyTodo.content;
+                    }
+                    return todo;
+                }
+            )
+        )
+    }
+
+    const openModal = (id) => {
+        setModifyTodo(todoList.filter(
+            todo => todo.id === id
+        )[0]);
+
+        setIsOpen(true);
+    }
+
+
+
     return (
        <>
             <div css={container}>
                 <main css={mainContainer}>
                     <header css={mainHeader}>
                         <h1 css={mainTitle}>ToDo</h1>
-                        <div css={TodoInputContainer}>
-                            <AiOutlineFileText css={TodoInputFileText}/>
-                            <input css={TodoInput} type="text" placeholder="Add your new Todo"/>
-                            <button css={AddTodoButton} type='button'><IoMdAddCircle /></button>
-                        </div>
+                            <AddTodo onChange={onChange} onKeyUp={onKeyUp} value={input.content} onAdd={onAdd}/>
                     </header>
-                    <div>
-                        <header></header>
-                        <main></main>
-                        <footer></footer>
-                    </div>
+                    <ul css={TodoContentList}>
+                        {todoList.map(
+                            todo => {
+                                return (
+                                    <TodoList key={todo.id} todo={todo} openModal={openModal} onRemove={onRemove}/>
+                                );
+                            }
+                        )}
+                    </ul>
                 </main>
+                {isOpen ? (<PromptModal title={'Edit Todo'} todo={modifyTodo} setIsOpen={setIsOpen} updateTodo={updateTodo} />) : ''}
+
             </div>
        </>
     );

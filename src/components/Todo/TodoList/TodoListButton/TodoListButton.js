@@ -2,22 +2,21 @@
 import { css } from "@emotion/react";
 import React from 'react';
 
-const ItemButton = css`
-    display: flex;
-    align-items: center;
+const ContentMainButton =css`
+    
     border: none;
-    height: 100%;
-    color: #999;
-    background-color: #ffffff00;
-    cursor: pointer;
-    &:hover {
-        color: #121212;
-    }
+    border-right: 2px solid #fafafa;
+    
+    width: 30px;
+    height: 30px;
+    padding: 5px;
 `;
+
+
 
 const TodoListButton = ({ onClick, children }) => {
     return (
-        <button css={ItemButton} onClick={onClick}>
+        <button css={ContentMainButton} onClick={onClick}>
             {children}
         </button>
     );
