@@ -7,26 +7,18 @@ import { HiHome } from 'react-icons/hi';
 import { FcTodoList } from 'react-icons/fc';
 import * as S from './Style'
 import { useState } from 'react';
-import { useRef } from 'react';
-import { useEffect } from 'react';
 
-const MainAside = () => {
+const SideAside = () => {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
 
-    const asideRef = useRef();
-    useEffect(
-        () => {
-            document.querySelector("body").onclick = (e) =>{
-                 if(!asideRef.current.contains(e.targe)){
-                    setIsOpen(false);
-                 }
-            }
-        },[]
-    );
+    const toggleSidebar = () =>{
+        setIsOpen(!isOpen)
+    };
+
 
     return (
-        <aside css={(isOpen)} ref={asideRef}>
+        <aside css={toggleSidebar()}>
             <Navigation
                 activeItemId="/"
                 onSelect={({itemId}) => {
@@ -44,9 +36,10 @@ const MainAside = () => {
                         elemBefore: () => <FcTodoList />,
                     },
                 ]}
-          />
+            />
         </aside>
     );
 };
 
-export default MainAside;
+export default SideAside;
+

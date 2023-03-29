@@ -1,10 +1,14 @@
 import { css } from "@emotion/react";
 
-export const style = css`
-    position: fixed;
-    top:0;
-    left: 0;
-    z-index: 99;
-    width: 300px;
-    height: 100%;
-`; 
+export const header = css`
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 0px 15px;
+`;
+
+export const title = css`
+    
+`;

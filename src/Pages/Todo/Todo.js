@@ -4,11 +4,13 @@ import React, { useRef, useState } from 'react';
 import PromptModal from '../../components/Modal/PromptModal/PromptModal';
 import AddTodo from '../../components/Todo/AddTodo/AddTodo';
 import TodoList from '../../components/Todo/TodoList/TodoList';
+import LiveClock from '../LiveClock/LiveClock';
 
 
 const container = css`
     position: relative;
     margin: 50px auto;
+    margin-top: 0;
     border: 2px solid #dbdbdb;
     width: 600px;
     height: 800px;
@@ -119,7 +121,8 @@ const Todo = () => {
 
 
     return (
-       <>
+       <>   
+            <LiveClock />
             <div css={container}>
                 <main css={mainContainer}>
                     <header css={mainHeader}>
