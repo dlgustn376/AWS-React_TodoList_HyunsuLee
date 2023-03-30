@@ -2,7 +2,6 @@
 import { css } from '@emotion/react';
 import React from 'react';
 import MainAside from '../../components/Aside/MainAside/MainAside';
-import LiveClock from '../LiveClock/LiveClock';
 import BallAnimation from '../../components/BallAnimation/BallAnimation';
 const HomeCotainer =css`
     position: relative;

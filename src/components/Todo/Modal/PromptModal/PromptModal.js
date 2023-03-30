@@ -21,7 +21,7 @@ const PromptModal = (props) => {
             return () => {
                 document.removeEventListener('mousedown', handler);
             }
-        }, []
+        }, [props.todo.content]
     );
 
     const closeModal = () => {

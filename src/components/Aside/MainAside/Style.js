@@ -10,14 +10,14 @@ export const style = (isOpen) => css`
     transition: left 1s ease;
 `;
 
-export const Menu =css`
-    position: relative;
+// export const Menu =css`
+//     position: relative;
 
-    width: 100%;
-    height: 100%;
-`;
+//     width: 100%;
+//     height: 100%;
+// `;
 
-export const MenuButton = (isOpen) => css`
+export const Menu = (isOpen) => css`
     border: none;
     position: absolute;
     left: ${isOpen ? '0px' : '-70px'};
@@ -30,3 +30,16 @@ export const MenuButton = (isOpen) => css`
     height: 100%;
     cursor: pointer;
 `;
+
+export const MenuButton = () => css`
+    border: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 30px;
+    height: 30px;
+    z-index: 99;
+    background-color: #dbdbdb99;
+    cursor: pointer;
+`;
+
+

@@ -5,7 +5,7 @@ import MainAside from '../../components/Aside/MainAside/MainAside';
 import PromptModal from '../../components/Modal/PromptModal/PromptModal';
 import AddTodo from '../../components/Todo/AddTodo/AddTodo';
 import TodoList from '../../components/Todo/TodoList/TodoList';
-import LiveClock from '../LiveClock/LiveClock';
+// import LiveClock from '../LiveClock/LiveClock';
 
 
 const container = css`
@@ -47,12 +47,9 @@ const TodoContentList = css`
 `;
 
 
-
 const Todo = () => {
     
-    
     const [isOpen, setIsOpen] = useState(false);
-
     const [modifyTodo, setModifyTodo] = useState({
         id: 0,
         content: ''

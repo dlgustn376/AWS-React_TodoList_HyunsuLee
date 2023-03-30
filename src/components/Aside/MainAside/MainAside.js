@@ -3,14 +3,17 @@ import React from 'react';
 import { Navigation } from "react-minimal-side-navigation/lib";
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 import { useNavigate } from 'react-router-dom';
-import { HiHome } from 'react-icons/hi';
-import { FcTodoList } from 'react-icons/fc';
-import { HiArrowCircleRight } from 'react-icons/hi';
-import { HiArrowCircleLeft } from 'react-icons/hi';
-import * as S from './Style'
 import { useState } from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
+
+import * as S from './Style'
+
+import { HiHome } from 'react-icons/hi';
+import { FcTodoList } from 'react-icons/fc';
+
+import { HiArrowCircleRight } from 'react-icons/hi';
+import { HiArrowCircleLeft } from 'react-icons/hi';
 
 const MainAside = () => {
     const navigate = useNavigate();
@@ -36,10 +39,8 @@ const MainAside = () => {
     return (
         <aside css={S.style(isOpen)} ref={asideRef}>
             {/* <div css={S.Menu}> */}
-                <div css={S.MenuButton(isOpen, true)} onClick={toggleMenu}>
-                    {/* <div>
-                        {isOpen ? <HiArrowCircleRight/>:<HiArrowCircleLeft/>}
-                    </div> */}
+                <div css={S.Menu(isOpen, true)}>
+                    
                     <Navigation
                         activeItemId="/"
                         onSelect={({itemId}) => {
@@ -50,6 +51,7 @@ const MainAside = () => {
                                 title: 'Home',
                                 itemId: '/home',
                                 elemBefore: () => <HiHome />
+                                
                             },
                             {
                                 title: 'ToDoList',
@@ -58,6 +60,9 @@ const MainAside = () => {
                             },
                         ]}
                     />
+                    <button css={S.MenuButton(isOpen, true)} onClick={toggleMenu}>
+                        {isOpen ? <HiArrowCircleLeft/>:<HiArrowCircleRight/>}
+                    </button>
                 </div>
             {/* </div> */}
 
