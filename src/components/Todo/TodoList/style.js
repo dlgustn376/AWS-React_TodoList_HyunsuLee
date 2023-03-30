@@ -13,13 +13,14 @@ export const ContentContainer =css`
 `;
 
 
-export const ContentMain=css`
+export const ContentMain = css`
     padding: 10px;
     height: 58%;
-    word-break: keep-all; /*줄바꿈의 기준 단어별로 끊어서 줄바꿈.*/
+    word-wrap: break-word;
     line-height: 25px;
     border-bottom: 1px solid #f0f0f0;
 `;
+
 
 export const ContentFooter=css`
     display: flex;

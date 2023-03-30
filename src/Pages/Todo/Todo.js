@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import React, { useRef, useState } from 'react';
+import MainAside from '../../components/Aside/MainAside/MainAside';
 import PromptModal from '../../components/Modal/PromptModal/PromptModal';
 import AddTodo from '../../components/Todo/AddTodo/AddTodo';
 import TodoList from '../../components/Todo/TodoList/TodoList';
@@ -124,6 +125,7 @@ const Todo = () => {
        <>   
             <LiveClock />
             <div css={container}>
+                <MainAside />
                 <main css={mainContainer}>
                     <header css={mainHeader}>
                         <h1 css={mainTitle}>ToDo</h1>
