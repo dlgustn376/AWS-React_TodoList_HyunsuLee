@@ -20,15 +20,13 @@ export const Menu =css`
 export const MenuButton = (isOpen) => css`
     border: none;
     position: absolute;
-    transform: translateY(-20%);
-    top: 160px;
-    left: ${isOpen ? '0px' : '-50px'};
+    left: ${isOpen ? '0px' : '-70px'};
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     background-color: #dbdbdb99;
-    padding: 0;
-    width: 150px;
+    padding-top: 80px;
+    width: 160px;
     height: 100%;
     cursor: pointer;
 `;

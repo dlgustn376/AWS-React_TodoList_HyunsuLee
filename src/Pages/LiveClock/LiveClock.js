@@ -25,16 +25,17 @@ const clockfont=css`
 `;
 const nowClock = css`
     text-align: center;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
+    margin: 0;
 `;
 
 const LiveClock = () => {
     return (
     <div css={clockConatiner}>
         <div css={clockMain}>
-            <Clock css={clockfont} format={'YYYY-MM-DD HH:mm:ss'} ticking={true} timezone={'Asia/Seoul'} />
             <h3 css={nowClock}>현재시간</h3>
+            <Clock css={clockfont} format={'YYYY-MM-DD HH:mm:ss'} ticking={true} timezone={'Asia/Seoul'} />
         </div>
     </div>
   );

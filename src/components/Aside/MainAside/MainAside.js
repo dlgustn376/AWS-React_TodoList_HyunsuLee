@@ -35,8 +35,8 @@ const MainAside = () => {
 
     return (
         <aside css={S.style(isOpen)} ref={asideRef}>
-            <div css={S.Menu}>
-                <button css={S.MenuButton(isOpen, true)} onClick={toggleMenu}>
+            {/* <div css={S.Menu}> */}
+                <div css={S.MenuButton(isOpen, true)} onClick={toggleMenu}>
                     {/* <div>
                         {isOpen ? <HiArrowCircleRight/>:<HiArrowCircleLeft/>}
                     </div> */}
@@ -58,8 +58,8 @@ const MainAside = () => {
                             },
                         ]}
                     />
-                </button>
-            </div>
+                </div>
+            {/* </div> */}
 
         </aside>
     );

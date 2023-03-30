@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 
 export const ContentContainer =css`
-    margin: 10px;
+    margin: 10px auto;
     width: 250px;
     height: 250px;
     box-shadow: 0px 0px 5px 1px #dbdbdb;
